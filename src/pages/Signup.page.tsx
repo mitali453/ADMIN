@@ -29,9 +29,7 @@ const Signup: React.FC<Props> = (props) => {
                 history.push("/dashboard");
                 setSubmitting(false);
 
-            },3000);
-            
-            
+            },3000); 
         },
     });
     
@@ -43,13 +41,8 @@ const Signup: React.FC<Props> = (props) => {
             <div className="p-16 pt-2 lg:p-36 lg:pt-2 font-sans lg:pb-0">
                 <div className="text-gray-700 text-4xl opacity-3 md:text-5xl mb-4">
                 Get started with a free account
-                    
-
                 </div>
                 <div className="font-medium text-gray-700"><p>Already have an account? <Link to="/login"><span className="text-blue-500 underline ">Log in</span></Link></p></div>
-
-
-
 
 
                 <form className="mt-8 space-y-6"
@@ -128,18 +121,13 @@ const Signup: React.FC<Props> = (props) => {
                             <label htmlFor="remember-me" className="ml-2 block text-gray-500 md:text-base text-xs">
                             I agree to the <span className="text-blue-500">terms and conditions</span>
                             </label>
-                        </div>
-
-
-                
+                    </div>
                     <div className=" flex items-center  justify-between">
-                    
                         <button
                             type="submit"
                             disabled={!isValid}
                             className={"group relative w-4/3 shadow-DEFAULT  flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 " }
                         >
-
                             Get Started!
                         </button>
                         {isSubmitting &&<FaSpinner className=" animate-spin"></FaSpinner>}
@@ -152,11 +140,6 @@ const Signup: React.FC<Props> = (props) => {
                 <span className="text-blue-500 font-medium"> Cookie Preferences, Privacy,</span> and <span className="text-blue-500 font-medium">Terms.</span>
             </footer>
         </div>
-        
-
-
-       
-
 
     );
 };
