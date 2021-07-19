@@ -35,7 +35,7 @@ const Login: FC<Props> = (props) => {
     
     
     return (
-        <div className=" md:w-1/2 p-2">
+        <div className=" lg:w-1/2 p-2">
             <div className="p-16 pt-6 lg:p-36 lg:pt-10 font-sans tracking-wide lg:pb-0">
                 <div className="text-black text-5xl md:text-5xl mb-4">
                     Log In to <span className=" text-blue-500">CORK</span>
