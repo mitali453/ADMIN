@@ -1,6 +1,6 @@
 import React, { FC, memo } from "react";
 import { Link, useHistory } from "react-router-dom";
-import {FaSpinner} from "react-icons/fa"
+import { FaSpinner } from "react-icons/fa"
 
 import * as yup from "yup";
 import { useFormik } from "formik";
@@ -8,48 +8,41 @@ import { useFormik } from "formik";
 interface Props {
 }
 const Login: FC<Props> = (props) => {
-    const history = useHistory ();
+    const history = useHistory();
 
-    const {isSubmitting,handleSubmit, touched,errors, getFieldProps ,isValid}  = useFormik({
-        initialValues:{
-            email : "",
-            password : ""
+    const { isSubmitting, handleSubmit, touched, errors, getFieldProps, isValid } = useFormik({
+        initialValues: {
+            email: "",
+            password: ""
         },
-        validationSchema :  yup.object().required().shape({
+        validationSchema: yup.object().required().shape({
             email: yup.string().required().email(),
             password: yup.string().required().min(8)
 
         }),
-        onSubmit:(data , {setSubmitting}) =>{
+        onSubmit: (data, { setSubmitting }) => {
             console.log("form submittiing", data);
             setTimeout(() => {
                 console.log("form submitted successfully");
                 history.push("/dashboard");
                 setSubmitting(false);
 
-            },3000);
-            
-            
+            }, 3000);
+
+
         },
     });
-    
-    
+
+
     return (
         <div className=" lg:w-1/2 p-2">
             <div className="p-16 pt-6 lg:p-36 lg:pt-10 font-sans tracking-wide lg:pb-0">
                 <div className="text-black text-5xl md:text-5xl mb-4">
                     Log In to <span className=" text-blue-500">CORK</span>
-                    
-
                 </div>
                 <div className="font-medium"><p>New Here? <Link to="/signup"><span className="text-blue-500 underline ">Create an account</span></Link></p></div>
-
-
-
-
-
                 <form className="mt-8 space-y-6"
-                    onSubmit= {handleSubmit}>
+                    onSubmit={handleSubmit}>
 
                     <input type="hidden" name="remember" defaultValue="true" />
                     <div className=" ">
@@ -64,15 +57,15 @@ const Login: FC<Props> = (props) => {
                                 autoComplete="email"
                                 required
                                 {...getFieldProps("email")}
-                                
+
                                 className=" text-medium font-medium relative w-3/4 block px-3 py-5 outline-none placeholder-gray-400 text-gray-900  focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Email address"
                             />
                         </div>
                         <hr />
-                        { touched.email && <div className=" text-red-500">{errors.email}</div>}
-                      
-                      
+                        {touched.email && <div className=" text-red-500">{errors.email}</div>}
+
+
                         <div className=" flex flex-row items-center ">
                             <label htmlFor="password" className="sr-only">
                                 Password
@@ -84,39 +77,39 @@ const Login: FC<Props> = (props) => {
                                 autoComplete="current-password"
                                 required
                                 {...getFieldProps("password")}
-                                
+
                                 className="font-medium relative block px-3 py-5 text-medium outline-none placeholder-gray-400 text-gray-900  focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
 
                                 placeholder="Password"
                             />
                         </div>
                         <hr />
-                        { touched.password && <div className="text-red-500">{errors.password}</div>}
-                        
+                        {touched.password && <div className="text-red-500">{errors.password}</div>}
+
                     </div>
-                 
+
                     <div>
-                    
+
                     </div>
-                
+
                     <div className=" flex items-center  justify-between">
-                    
+
                         <button
                             type="submit"
                             disabled={!isValid}
-                            className={"group relative w-4/3 shadow-lg flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 " }
+                            className={"group relative w-4/3 shadow-lg flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 "}
                         >
 
                             Log in
                         </button>
-                        {isSubmitting &&<FaSpinner className=" animate-spin"></FaSpinner>}
-                        
+                        {isSubmitting && <FaSpinner className=" animate-spin"></FaSpinner>}
+
                     </div>
-                    
+
 
 
                     <div className="flex items-center flex-col  ">
-                   
+
                         <div className="flex items-center justify-items-center pb-4">
                             <input
                                 id="remember-me"
