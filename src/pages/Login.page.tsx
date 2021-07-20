@@ -4,6 +4,7 @@ import { FaSpinner } from "react-icons/fa"
 
 import * as yup from "yup";
 import { useFormik } from "formik";
+import Button from "../components/Button/Button";
 
 interface Props {
 }
@@ -94,14 +95,7 @@ const Login: FC<Props> = (props) => {
 
                     <div className=" flex items-center  justify-between">
 
-                        <button
-                            type="submit"
-                            disabled={!isValid}
-                            className={"group relative w-4/3 shadow-lg flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 "}
-                        >
-
-                            Log in
-                        </button>
+                        <Button>Log in</Button>
                         {isSubmitting && <FaSpinner className=" animate-spin"></FaSpinner>}
 
                     </div>
