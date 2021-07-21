@@ -11,7 +11,7 @@ const Signup: React.FC<Props> = (props) => {
 
     const history = useHistory ();
 
-    const {isSubmitting,handleSubmit, touched,errors, getFieldProps ,isValid }  = useFormik({
+    const {isSubmitting,handleSubmit, touched,errors, getFieldProps }  = useFormik({
         initialValues:{
             email : "",
             password : "",

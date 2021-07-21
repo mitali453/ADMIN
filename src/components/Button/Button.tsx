@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, Children, FC, memo } from "react";
+import { ButtonHTMLAttributes, FC, memo } from "react";
 import { IconType } from "react-icons";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
