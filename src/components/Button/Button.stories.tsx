@@ -8,7 +8,22 @@ import  Button  from './Button';
 export default {
   component: Button,
   title: 'Button',
+  argTypes:{
+      theme:{
+          control:{type:"select"},
+      },
+      type: {
+        control:{type:"select"},
+    },
+    onclick:{
+        action:"clicked"},
+  }
 } as Meta;
 
-export const main = (args :any) => <Button {...args} >click</Button>;
-export const main2 = (args :any) => <Button {...args} >cancel</Button>;
+export const Main = (args :any) => <Button {...args} ></Button>;
+Main.args={
+    children:"Sign in ",
+    type:"submit",
+    className:"",
+    disabled: false, 
+}
