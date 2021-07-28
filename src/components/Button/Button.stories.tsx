@@ -15,8 +15,7 @@ export default {
       type: {
         control:{type:"select"},
     },
-    onclick:{
-        action:"clicked"},
+    
   }
 } as Meta;
 
@@ -25,5 +24,5 @@ Main.args={
     children:"Sign in ",
     type:"submit",
     className:"",
-    disabled: false, 
+    
 }

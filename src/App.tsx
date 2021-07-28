@@ -1,32 +1,40 @@
-import React from 'react';
+import { Divider } from '@material-ui/core';
+import React, { FC, lazy, Suspense } from 'react';
+import { FaSpinner } from 'react-icons/fa';
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-
-
-import AppContainerPage from './pages/AppContainer.page';
-import AuthPage from './pages/Auth.page';
+import { LS_AUTH_TOKEN } from './api/base';
+import AppContainerLazy from './pages/AppContainer/AppContainer.lazy';
+import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFoundPage from './pages/NotFound.page';
 
-function App() {
+interface Props {
+}
+
+const App: FC<Props> = () => {
+  const token = localStorage.getItem(LS_AUTH_TOKEN);
   return (
     <div>
-    <BrowserRouter>
-      <Switch>
+      <Suspense fallback={<div className="text-red-500 text-center text-5xl">Loading....<FaSpinner className=" animate-spin"></FaSpinner></div>}>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" exact>
+              {token ? <Redirect to="/dashboard" /> : <Redirect to="/login" />}
+            </Route>
+            <Route path={["/login", "/signup"]} exact>
+              {token ? <Redirect to="/dashboard" /> : (
+                <AuthLazy />
+              )}
 
-        <Route path="/" exact>
-          <Redirect to="/login"></Redirect>
-        </Route>
-        <Route path={["/login","/signup"]} exact>
-          <AuthPage></AuthPage>
-        </Route>
-        <Route path={["/dashboard","/recordings"]} exact>
-          <AppContainerPage></AppContainerPage>
-        </Route>
-        <Route>
-          <NotFoundPage></NotFoundPage>
-        </Route>
-      </Switch>
-
-    </BrowserRouter>
+            </Route>
+            <Route path={["/dashboard", "/recordings"]} exact>
+              <AppContainerLazy />
+            </Route>
+            <Route>
+              <NotFoundPage />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </Suspense>
     </div>
   );
 }

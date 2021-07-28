@@ -12,7 +12,7 @@ const AuthHero: FC<Props> = (props) => {
     
     return (
         <div className=" h-screen w-1/2 bg-gray-800 text-white invisible lg:visible absolute md:relative flex flex-wrap justify-center items-center">
-            <img className="w-80 h-100" src="https://i.pinimg.com/736x/54/26/4a/54264a84e2f96cb7a5c32efa99b4714d.jpg" alt="" />
+            <img className="w-80 h-100" src="Logo.png" alt="......" />
         </div>
     );
 };

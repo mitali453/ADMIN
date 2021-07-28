@@ -3,7 +3,8 @@ import React from "react";
 import { FaSpinner } from "react-icons/fa";
 import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
-import Button from "../components/Button/Button";
+import Button from "../../components/Button/Button";
+
 
 interface Props {
 }
@@ -38,7 +39,7 @@ const Signup: React.FC<Props> = (props) => {
 
     return (
         
-        <div className=" lg:w-1/2 p-2 ">
+        <div className=" pt-2 lg:w-1/2 md:p-28 md:pt-4 lg:p-2">
             <div className="p-16 pt-2 lg:p-36 lg:pt-2 font-sans lg:pb-0">
                 <div className="text-gray-700 text-4xl opacity-3 md:text-5xl mb-4">
                 Get started with a free account
@@ -125,13 +126,13 @@ const Signup: React.FC<Props> = (props) => {
                     </div>
                     <div className=" flex items-center  justify-between">
                      <Button>Get Started</Button>
-                        {isSubmitting &&<FaSpinner className=" animate-spin"></FaSpinner>}
+                        {isSubmitting && <FaSpinner className=" animate-spin"></FaSpinner>}
                         
                     </div>
 
                 </form>
             </div>
-            <footer className="p-14 pt-0 lg:p-32 md:pt-0 lg:pt-24 text-base ">&copy; 2020 All Rights Reserved.  <span className="text-blue-500 font-medium">CORK</span>  is a product of Designreset.
+            <footer className="p-14 pt-0 lg:p-32 md:pt-0 lg:pt-20 text-base ">&copy; 2020 All Rights Reserved.  <span className="text-blue-500 font-medium">MiPortal</span>  is a product of Designreset.
                 <span className="text-blue-500 font-medium"> Cookie Preferences, Privacy,</span> and <span className="text-blue-500 font-medium">Terms.</span>
             </footer>
         </div>
