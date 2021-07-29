@@ -5,10 +5,12 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import Button from "../../components/Button/Button";
 import { login } from "../../api/auth";
-
+import { User } from "../../modules/User";
 
 interface Props {
+    onLogin:(user:User)=>void;
 }
+
 const Login: FC<Props> = (props) => {
     const history = useHistory();
     const {handleSubmit ,getFieldProps, touched ,isSubmitting , errors} =  useFormik({
@@ -17,13 +19,15 @@ const Login: FC<Props> = (props) => {
             password : ""
         },
         validationSchema: yup.object().shape({
-            email : yup.string().required("This feild is required").email(),
+            email : yup.string().required("This field is required").email(),
             password : yup.string().required().min(8 , ({min}) => `Atleast ${min} characters`) 
         }),
         onSubmit : (data ) => {
-         login(data).then(()=>
-            history.push("/dashboard") 
-         )      
+         login(data).then( (u)=>{
+            console.log(u);
+            props.onLogin(u);
+            history.push("/dashboard");
+         });      
         },
     });
 
