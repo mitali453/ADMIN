@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { fetchGroups } from "../../api/groups";
 
 
+interface Props{}
 
-interface Props {}
 
 const Dashboard: FC<Props> = (props) => {
     useEffect(() => {

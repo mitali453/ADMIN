@@ -5,15 +5,16 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import Button from "../../components/Button/Button";
 import { login } from "../../api/auth";
-import { User } from "../../modules/User";
+import AppContext from "../../App.context";
+import { useContext } from "react";
 
-interface Props {
-    onLogin:(user:User)=>void;
-}
+interface Props{}
 
 const Login: FC<Props> = (props) => {
+
+    const {setUser}=useContext(AppContext);
     const history = useHistory();
-    const {handleSubmit ,getFieldProps, touched ,isSubmitting , errors} =  useFormik({
+    const {handleSubmit ,getFieldProps, touched ,isSubmitting , errors ,isValid} =  useFormik({
         initialValues : {
             email : "",
             password : ""
@@ -25,7 +26,7 @@ const Login: FC<Props> = (props) => {
         onSubmit : (data ) => {
          login(data).then( (u)=>{
             console.log(u);
-            props.onLogin(u);
+            setUser(u);
             history.push("/dashboard");
          });      
         },
@@ -90,7 +91,7 @@ const Login: FC<Props> = (props) => {
 
                     <div className=" flex items-center  justify-between">
 
-                        <Button type="submit">Log in</Button>
+                        <Button type="submit" disabled={!isValid}>Log in</Button>
                         {isSubmitting && <FaSpinner className=" animate-spin"></FaSpinner>}
 
                     </div>
