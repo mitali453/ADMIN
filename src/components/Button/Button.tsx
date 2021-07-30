@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { ButtonHTMLAttributes, FC, memo } from "react";
 import { IconType } from "react-icons";
 
@@ -17,8 +18,9 @@ const Button: FC<Props> = ({ children, theme, className, ...rest }) => {
         <button
             type="submit"
             {...rest}
-            className={"group relative w-4/3 shadow-lg flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white" 
-            + themeClasses +" "+ className}
+            className={
+                classNames("group relative w-4/3 shadow-lg flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white disabled:cursor-not-allowed ",
+          themeClasses , className)}
         >
             {children}
         </button>

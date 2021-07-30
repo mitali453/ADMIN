@@ -1,3 +1,4 @@
+import { Checkbox } from "@material-ui/core";
 import { useFormik } from "formik";
 import React from "react";
 import { FaSpinner } from "react-icons/fa";
@@ -12,12 +13,13 @@ const Signup: React.FC<Props> = (props) => {
 
     const history = useHistory ();
 
-    const {isSubmitting,handleSubmit, touched,errors, getFieldProps }  = useFormik({
+    const {isSubmitting,handleSubmit, touched,errors, getFieldProps}  = useFormik({
         initialValues:{
             email : "",
             password : "",
             username: ""
         },
+        isInitialValid: false,
         validationSchema :  yup.object().required().shape({
             email: yup.string().required().email(),
             password: yup.string().required().min(8),
@@ -118,6 +120,7 @@ const Signup: React.FC<Props> = (props) => {
                                 id="remember-me"
                                 name="remember-me"
                                 type="checkbox"
+                            
                                 className="h-4 w-4 text-indigo-500 fill-current  border-gray-300 rounded "
                             />
                             <label htmlFor="remember-me" className="ml-2 block text-gray-500 md:text-base text-xs">
@@ -125,7 +128,7 @@ const Signup: React.FC<Props> = (props) => {
                             </label>
                     </div>
                     <div className=" flex items-center  justify-between">
-                     <Button>Get Started</Button>
+                     <Button type="submit">Get Started</Button>
                         {isSubmitting && <FaSpinner className=" animate-spin"></FaSpinner>}
                         
                     </div>
