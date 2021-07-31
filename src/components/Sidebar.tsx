@@ -7,8 +7,12 @@ import AppContext from "../App.context";
 import Button from "./Button/Button";
 
 const Sidebar: FC = () => {
+
+
     const history = useHistory();
+
     const { user } = useContext(AppContext);
+    console.log(" Sidebar is rendering");
     ;
     return (
         <div>
