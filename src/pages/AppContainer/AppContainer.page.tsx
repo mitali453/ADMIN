@@ -7,7 +7,9 @@ import RecordingsPage from "./Recordings.page";
 interface Props{}
 
 const AppContainer: FC<Props> = () => {
+    console.log("AppContainer Rerendering");
     return (
+
         <div className=" flex flex-row ">
             <Sidebar></Sidebar>
             <Switch>

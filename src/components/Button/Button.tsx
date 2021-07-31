@@ -9,7 +9,9 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     
 }
 
+
 const Button: FC<Props> = ({ children, theme, className, ...rest }) => {
+    console.log("Button is rendering" + children);
     const themeClasses =
         theme === "primary" ? " bg-indigo-500 hover:bg-indigo-600 focus:ring-indigo-500 " : " bg-gray-500 hover:bg-gray-600 focus:ring-gray-500 ";
 

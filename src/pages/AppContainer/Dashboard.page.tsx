@@ -6,7 +6,7 @@ import { fetchGroups } from "../../api/groups";
 
 interface Props{}
 
-
+console.log("Dashboard is rendering");
 const Dashboard: FC<Props> = (props) => {
     useEffect(() => {
         fetchGroups({ status : "all-groups"})
