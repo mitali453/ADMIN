@@ -1,4 +1,3 @@
-import userEvent from "@testing-library/user-event";
 import axios from "axios";
 import { User } from "../modules/User";
 import { LS_AUTH_TOKEN } from "./base";

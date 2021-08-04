@@ -1,17 +1,11 @@
-import userEvent from "@testing-library/user-event";
-import { useContext } from "react";
 import { FC, memo } from "react";
-import { useHistory } from "react-router-dom";
 import { logout } from "../api/auth";
-import AppContext from "../App.context";
+import { useAppSelector } from "../store";
 import Button from "./Button/Button";
 
 const Sidebar: FC = () => {
 
-
-    const history = useHistory();
-
-    const { user } = useContext(AppContext);
+    const userFirstName = useAppSelector((state) => state.me?.first_name);
     console.log(" Sidebar is rendering");
     ;
     return (
@@ -23,7 +17,7 @@ const Sidebar: FC = () => {
                         window.location.href = "/login";
                     }
                 }>LOGOUT</Button>
-                <div className=" text-yehhllow-400">{user!.first_name}</div>
+                <div className=" text-yellow-400">{userFirstName}</div>
 
             </div>
 

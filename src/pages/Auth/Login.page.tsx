@@ -1,34 +1,36 @@
-import React, { FC, memo } from "react";
+import { FC, memo } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa"
 import * as yup from "yup";
 import { useFormik } from "formik";
 import Button from "../../components/Button/Button";
 import { login } from "../../api/auth";
-import AppContext from "../../App.context";
-import { useContext } from "react";
+import { useDispatch } from "react-redux";
 
-interface Props{}
+interface Props { }
 
 const Login: FC<Props> = (props) => {
 
-    const {setUser}=useContext(AppContext);
     const history = useHistory();
-    const {handleSubmit ,getFieldProps, touched ,isSubmitting , errors ,isValid} =  useFormik({
-        initialValues : {
-            email : "",
-            password : ""
+    const dispatch = useDispatch();
+
+    const { handleSubmit, getFieldProps, touched, isSubmitting, errors, isValid } = useFormik({
+        initialValues: {
+            email: "",
+            password: ""
         },
         validationSchema: yup.object().shape({
-            email : yup.string().required("This field is required").email(),
-            password : yup.string().required().min(8 , ({min}) => `Atleast ${min} characters`) 
+            email: yup.string().required("This field is required").email(),
+            password: yup.string().required().min(8, ({ min }) => `Atleast ${min} characters`)
         }),
-        onSubmit : (data ) => {
-         login(data).then( (u)=>{
-            console.log(u);
-            setUser(u);
-            history.push("/dashboard");
-         });      
+        onSubmit: (data) => {
+            login(data).then((u) => {
+                console.log(u);
+                dispatch({ type: "me/login", payload: u })
+                history.push("/dashboard");
+                console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+            });
+
         },
     });
 

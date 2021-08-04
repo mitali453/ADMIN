@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { ButtonHTMLAttributes, FC, memo } from "react";
-import { IconType } from "react-icons";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     theme ?: 'primary' | 'secondary';
