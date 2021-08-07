@@ -5,7 +5,7 @@ import { BASE_URL } from "./auth";
 interface GroupRequest{
     limit? : number;
     offset?: number;
-    query? : string;
+    query?: string;
     status : "all-groups" | "favourite" | "archieved"
 }
 

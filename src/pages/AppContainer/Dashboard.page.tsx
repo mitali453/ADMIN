@@ -7,13 +7,13 @@ import { useAppSelector } from "../../store";
 
 interface Props {}
 
-const Dashboard: FC<Props> = (props) => {
+const Dashboard: FC<Props> = () => {
 
-    const query = useAppSelector(state => state.groupQuery);
+    const query = useAppSelector((state) => state.groups.query);
 
     const groups = useAppSelector(state => {
-        const groupIds = state.groupQueryMap[state.groupQuery] || [];
-        const groups = groupIds.map(id => state.groups[id]);
+        const groupIds = state.groups.queryMap[state.groups.query] || [];
+        const groups = groupIds.map(id => state.groups.byId[id]);
         return groups;
     });
 

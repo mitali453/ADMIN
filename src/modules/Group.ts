@@ -1,3 +1,4 @@
+
 import { User } from "./User";
 
 export interface Group {
@@ -11,11 +12,10 @@ export interface Group {
     created_at:           Date;
     updated_at:           Date;
     chatCount:            number;
-
     creator:              User;
     issues:               any[];
     invitedMembers:       User[];
     participants:         User[];
     advocatePage?:        string;
+    query:string
 }
-export{};

@@ -5,7 +5,7 @@ import Button from "./Button/Button";
 
 const Sidebar: FC = () => {
 
-    const userFirstName = useAppSelector((state) => state.me?.first_name);
+    const userFirstName = useAppSelector((state) => state.users.byId[state.auth.id!].first_name);
     console.log(" Sidebar is rendering");
     ;
     return (
