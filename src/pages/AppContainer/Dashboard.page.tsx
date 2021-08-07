@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import {FC , memo}  from  "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { groupsActions } from "../../actions/groups.actions";
 import { fetchGroups } from "../../api/groups";
 import { useAppSelector } from "../../store";
 
@@ -17,12 +18,9 @@ const Dashboard: FC<Props> = () => {
         return groups;
     });
 
-    const dispatch = useDispatch();
-
     useEffect(() => {
-        fetchGroups({ status : "all-groups" , query}).then(groups =>{
-            dispatch({type: "groups/query_completed" , payload : {groups : groups , query}})
-        }) 
+        fetchGroups({ status : "all-groups" , query}).then(groups =>
+            groupsActions.queryCompleted(query,groups)); 
     } , [query]);
 
     return(
@@ -33,7 +31,7 @@ const Dashboard: FC<Props> = () => {
             placeholder="Search"
             onChange={(e)=>
             {
-                dispatch({type: "groups/query" , payload: e.target.value })
+                groupsActions.query(e.target.value);
             }}/>
             <div>
                 {

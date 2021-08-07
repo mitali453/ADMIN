@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import Button from "../../components/Button/Button";
 import { login } from "../../api/auth";
 import { useDispatch } from "react-redux";
-import { meLoginAction } from "../../actions/auth.actions";
+import { authActions} from "../../actions/auth.actions";
 
 interface Props { }
 
@@ -27,7 +27,7 @@ const Login: FC<Props> = (props) => {
         onSubmit: (data) => {
             login(data).then((u) => {
                 console.log(u);
-                dispatch(meLoginAction(u));
+                authActions.login(u);
                 history.push("/dashboard");
                 console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
             });
