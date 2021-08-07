@@ -3,18 +3,15 @@ import { useEffect } from 'react';
 import { useCallback } from 'react';
 import { useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { me } from './api/auth';
 import { LS_AUTH_TOKEN } from './api/base';
 import Button from './components/Button/Button';
-import { User } from './modules/User';
 import AppContainerLazy from './pages/AppContainer/AppContainer.lazy';
 import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFoundPage from './pages/NotFound.page';
-import { AppState, meFetchedAction, useAppSelector} from './store';
-
-
+import { meFetchedAction, useAppSelector} from './store';
 
 const App: FC = (props) => {
   const user = useAppSelector((state) => state.me);
