@@ -1,5 +1,5 @@
 import { bindActionCreators } from "redux";
-import { User } from "../modules/User";
+import { User } from "../models/User";
 import { store } from "../store";
 import { ME_FETCH, ME_LOGIN } from "./actions.constants";
 

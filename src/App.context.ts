@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { User } from "./modules/User";
+import { User } from "./models/User";
 
 interface AppContextData {
     user?: User;

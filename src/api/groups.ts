@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Group } from "../modules/Group";
+import { Group } from "../models/Group";
 import { BASE_URL } from "./auth";
 
 interface GroupRequest{

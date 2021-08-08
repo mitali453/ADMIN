@@ -9,6 +9,6 @@
         }
     ],
     "rules":{
-        "quotes":[1,"double"]     //1 for error , 2 for warning
+        //"quotes":[1,"double"]     //1 for error , 2 for warning
     }
 }

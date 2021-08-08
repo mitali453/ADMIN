@@ -1,5 +1,5 @@
 import { bindActionCreators } from "redux";
-import { Group } from "../modules/Group";
+import { Group } from "../models/Group";
 import { store } from "../store";
 import { GROUPS_QUERY, GROUPS_QUERY_COMPLETED } from "./actions.constants";
 
