@@ -1,11 +1,12 @@
 import { FC, memo } from "react";
 import { logout } from "../api/auth";
+import { meSelector } from "../selectors/auth.selectors";
 import { useAppSelector } from "../store";
 import Button from "./Button/Button";
 
 const Sidebar: FC = () => {
 
-    const userFirstName = useAppSelector((state) => state.users.byId[state.auth.id!].first_name);
+    const user = useAppSelector(meSelector);
     console.log(" Sidebar is rendering");
     ;
     return (
@@ -17,7 +18,7 @@ const Sidebar: FC = () => {
                         window.location.href = "/login";
                     }
                 }>LOGOUT</Button>
-                <div className=" text-yellow-400">{userFirstName}</div>
+                <div className=" text-yellow-400">{user!.first_name}</div>
 
             </div>
 

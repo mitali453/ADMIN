@@ -5,7 +5,6 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import Button from "../../components/Button/Button";
 import { login } from "../../api/auth";
-import { useDispatch } from "react-redux";
 import { authActions} from "../../actions/auth.actions";
 
 interface Props { }
@@ -13,7 +12,6 @@ interface Props { }
 const Login: FC<Props> = (props) => {
 
     const history = useHistory();
-    const dispatch = useDispatch();
 
     const { handleSubmit, getFieldProps, touched, isSubmitting, errors, isValid } = useFormik({
         initialValues: {

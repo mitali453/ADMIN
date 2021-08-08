@@ -8,7 +8,8 @@ interface AppContextData {
 
 const AppContext = createContext<AppContextData>({
     user: undefined,
-    setUser:() => {},
+    setUser: () => { },
 });
 export default AppContext;
-export{};
+
+export { };
