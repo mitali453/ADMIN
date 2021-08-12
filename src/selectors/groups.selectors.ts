@@ -11,8 +11,8 @@ import { groupStateSelector } from "./app.selectors";
     return groupState.query;
 }*/
 
-export const groupQuerySelector=createSelector([groupStateSelector],    //3 approach
-    (groupState)=>groupState.query);
+export const groupQuerySelector = createSelector([groupStateSelector],    //3 approach
+    (groupState) => groupState.query);
 
 
 /*export const groupQueryMapSelector = (state: AppState) => {
@@ -20,18 +20,22 @@ export const groupQuerySelector=createSelector([groupStateSelector],    //3 appr
     return groupState.queryMap;
 }*/
 
-export const groupQueryMapSelector=createSelector([groupStateSelector],   
-    (groupState)=>groupState.queryMap);
+export const groupQueryMapSelector = createSelector([groupStateSelector],
+    (groupState) => groupState.queryMap);
 
 
 /*export const groupByIdSelector = (state: AppState) => {
     const groupState = groupStateSelector(state);
     return groupState.byId;
 }*/
-export const groupByIdSelector=createSelector([groupStateSelector],    //3 approach
-    (groupState)=>groupState.byId);
+const groupByIdSelector = createSelector([groupStateSelector],    //3 approach
+    (groupState) => groupState.byId);
 
-
+const groupLoadingQuerySelector = createSelector([groupStateSelector], (groupState) =>
+    groupState.loadingQuery
+)
+export const groupLoadingSelector = createSelector([groupQuerySelector, groupLoadingQuerySelector],
+    (query, loadingMap) => loadingMap[query]);
 
 /*export const groupsSelector = (state: AppState) => {
     const query = groupQuerySelector(state);
@@ -43,9 +47,10 @@ export const groupByIdSelector=createSelector([groupStateSelector],    //3 appro
 
 
 }*/
-export const groupsSelector=createSelector([groupQuerySelector,groupByIdSelector,groupQueryMapSelector],
-    (query,byId,queryMap) =>{
-    const groupIds = queryMap[query] || [];
-    const groups = groupIds.map((id) => byId[id]);
-    return groups });
+export const groupsSelector = createSelector([groupQuerySelector, groupByIdSelector, groupQueryMapSelector],
+    (query, byId, queryMap) => {
+        const groupIds = queryMap[query] || [];
+        const groups = groupIds.map((id) => byId[id]);
+        return groups
+    });
 

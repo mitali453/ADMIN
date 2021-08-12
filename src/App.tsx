@@ -2,9 +2,8 @@ import { FC, Suspense } from 'react';
 import { useEffect } from 'react';
 import { FaSpinner } from 'react-icons/fa';
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { authActions } from './actions/auth.actions';
-import { me } from './api/auth';
 import { LS_AUTH_TOKEN } from './api/base';
+import { me } from './middleware/auth.middleware';
 import AppContainerLazy from './pages/AppContainer/AppContainer.lazy';
 import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFoundPage from './pages/NotFound.page';
@@ -20,7 +19,7 @@ const App: FC = (props) => {
     if (!token) {
       return;
     }
-    me().then((u) => (authActions.fetch(u)));
+    me();
 
   }, []);  // eslint-disable-line react-hooks/exhaustive-deps
 

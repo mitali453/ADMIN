@@ -10,7 +10,7 @@ export const getIds = (entities: Entity[]) => {
     return entities.map(e => e.id);
 }
 export const addOne = (state: EntityState, entity: Entity) => {
-    return { ...state, [entity.id]: entity };
+    return { ...state, byId: { ...state.byId, [entity.id]: entity } };
 };
 
 
