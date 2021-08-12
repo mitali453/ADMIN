@@ -6,14 +6,13 @@ import { store } from "../store";
 export const fetchGroups = (request: GroupRequest) => {
     const queryMap = groupQueryMapSelector(store.getState())
     const query = request.query;
-    const groupIds=queryMap[query];
-    groupsActions.query(query,!groupIds)
+    const groupIds = queryMap[query];
+    groupsActions.query(query, !groupIds)
 
-    if(groupIds){
+    if (groupIds) {
         return;
 
     }
-    //groupsActions.query(request.query);
     fetchGroupApi(request).then((groups) => {
         groupsActions.queryCompleted(query, groups);
     });
