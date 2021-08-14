@@ -1,7 +1,6 @@
 import {FC , memo}  from  "react";
 import { FaSpinner } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { groupQueryAction } from "../../actions/groups.actions";
 import GroupData from "../../components/GroupList/GroupData";
 import { groupsLoadingSelector, groupQuerySelector, groupsSelector } from "../../selectors/groups.selectors";
@@ -11,7 +10,7 @@ interface Props {
     
 }
 
-const Dashboard: FC<Props> = () => {
+const Groups: FC<Props> = () => {
 
     const query = useAppSelector(groupQuerySelector);
     const Loading = useAppSelector(groupsLoadingSelector)
@@ -45,6 +44,6 @@ const Dashboard: FC<Props> = () => {
     );
 };
 
-Dashboard.defaultProps = {}
+Groups.defaultProps = {}
 
-export default memo(Dashboard);
+export default memo(Groups);
