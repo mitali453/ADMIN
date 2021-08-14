@@ -5,6 +5,9 @@ module.exports = {
     boxShadow:{
       DEFAULT: "0 10px 20px -10px #4361ee"
     },
+    fontFamily:{
+      'body' : ['Nunito', 'sans-serif']
+    },
   
     extend: {
      

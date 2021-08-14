@@ -2,8 +2,10 @@ import { FC, Suspense } from 'react';
 import { useEffect } from 'react';
 import { FaSpinner } from 'react-icons/fa';
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { authActions } from './actions/auth.actions';
+import { me } from './api/auth';
 import { LS_AUTH_TOKEN } from './api/base';
-import { me } from './middleware/auth.middleware';
+//import { me } from './middleware/auth.middleware';
 import AppContainerLazy from './pages/AppContainer/AppContainer.lazy';
 import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFoundPage from './pages/NotFound.page';
@@ -19,8 +21,7 @@ const App: FC = (props) => {
     if (!token) {
       return;
     }
-    me();
-
+    me().then((u)=>authActions.fetch(u));
   }, []);  // eslint-disable-line react-hooks/exhaustive-deps
 
   console.log("App is rendering");
@@ -30,7 +31,8 @@ const App: FC = (props) => {
   }
 
   return (
-    <>
+    <div className=" flex-wrap flex-shrink-0">
+     
       <Suspense fallback={<div className="text-red-500 text-center text-5xl">Loading....<FaSpinner className=" animate-spin"></FaSpinner></div>}>
         <BrowserRouter>
           <Switch>
@@ -43,7 +45,7 @@ const App: FC = (props) => {
               )}
 
             </Route>
-            <Route path={["/dashboard", "/recordings"]} exact>
+            <Route path={["/dashboard", "/recordings","/groups"]} exact>
               {user ? <AppContainerLazy /> : <Redirect to="/login" />}
             </Route>
             <Route>
@@ -52,7 +54,7 @@ const App: FC = (props) => {
           </Switch>
         </BrowserRouter>
       </Suspense>
-    </>
+    </div>
   );
 }
 
