@@ -1,30 +1,38 @@
 import { FC, memo } from "react";
+import { FaExternalLinkAlt, FaMagento, FaPlay, FaSlideshare } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { logout } from "../api/auth";
-import { meSelector } from "../selectors/auth.selectors";
-import { useAppSelector } from "../store";
-import Button from "./Button/Button";
+
 
 const Sidebar: FC = () => {
-
-    const user = useAppSelector(meSelector);
     console.log(" Sidebar is rendering");
     ;
     return (
-        <div>
-            <div className=" h-screen w-60 bg-gray-600 text-green-500"> This is sidebar
-                <Button onClick={
-                    () => {
-                        logout();
-                        window.location.href = "/login";
-                    }
-                }>LOGOUT</Button>
-                <div className=" text-yellow-400">{user!.first_name}</div>
-                <br />
-                <Link className=" text-pink-300" to="/dashboard">Go to Dashboard</Link>
-                <br />
-                <br />
-                <Link to="/recordings">Go to Recordings</Link>
+    
+        <div className="">
+            <div className=" h-screen w-60 bg-gray-300 text-green-500 ">
+              
+                <div className=" ml-3 mr-3 flex items-center text-3xl font-bold text-gray-800 space-x-4 rounded-md  hover:bg-white py-3">
+                    <FaMagento ></FaMagento>
+                    <Link className="text-xl font-normal " to="/dashboard"> Dashboard</Link>
+                </div>
+                <div className=" ml-3 mr-3 flex items-center text-3xl font-bold text-gray-800 space-x-4 rounded-md hover:bg-white py-3">
+                    <FaPlay></FaPlay>
+                    <Link className=" text-xl font-normal" to="/recordings">Recordings</Link></div>
+                <div className="ml-3 mr-3 flex items-center text-3xl font-bold text-gray-800 space-x-4 rounded-md hover:bg-white py-3">
+                    <FaSlideshare></FaSlideshare>
+                    <Link className="text-xl font-normal " to="/groups"> Groups</Link>
+                </div>
+                <div className=" ml-3 mr-3 flex items-center text-3xl font-bold text-gray-800 space-x-4 rounded-md hover:bg-white py-3">
+                    <FaExternalLinkAlt></FaExternalLinkAlt>
+                    <button className=" text-xl font-normal text-gray-800 border-0" onClick={
+                        () => {
+                            logout();
+                            window.location.href = "/login";
+                        }
+                    }>Logout</button>
+                </div>
+
 
             </div>
 
