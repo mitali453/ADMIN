@@ -19,16 +19,14 @@ const Groups: FC<Props> = () => {
    
 
     return(
-        <div className=" flex flex-col justify-center bg-scroll ">
-          <div className=" p-10 flex ml-10" >
-              <h1 className="text-xl"></h1>
+        <div className=" p-5 content-center ">
           <input
-                    className="border border-black p-2 w-2/3" type="text"
+                    className="border border-black p-2 w-min" type="text"
                     value={query}
                     placeholder="Search Groups here"
                     onChange={(e) => {
                         dispatch(groupQueryAction(e.target.value))
-                    }} /></div>
+                    }} />
             {Loading &&  <FaSpinner className="animate-spin m-3"></FaSpinner> }
             <div>
             {groups.map((group, index) => {
