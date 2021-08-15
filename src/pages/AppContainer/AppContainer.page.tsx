@@ -5,6 +5,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Sidebar from "../../components/Sidebar";
 import DashboardPage from "./Dashboard.page";
 import EditProfilePage from "./EditProfile.page";
+import GroupDetailPage from "./GroupDetail.page";
 import GroupsPage from "./Groups.page";
 import RecordingsPage from "./Recordings.page";
 
@@ -26,6 +27,9 @@ const AppContainer: FC<Props> = () => {
 
                 <Route path="/dashboard">
                     <DashboardPage></DashboardPage>
+                </Route>
+                <Route path="/groups/:groupId">
+                    <GroupDetailPage></GroupDetailPage>
                 </Route>
                 <Route path="/recordings">
                     <RecordingsPage></RecordingsPage>
