@@ -1,4 +1,5 @@
 
+//import { useState } from "react";
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
 //import { meSelector } from "../../selectors/auth.selectors";
@@ -6,9 +7,12 @@ import { Link } from "react-router-dom";
 
 
 interface Props {
+   sidebarToggle :()=>void;
 }
-const NavBar: FC<Props> = (props) => {
-  ;
+const NavBar: FC<Props> = ({sidebarToggle}) => {
+  //const isSideBarOpen=true;  
+
+  
     //const user = useAppSelector(meSelector);
     return (
 
@@ -31,7 +35,8 @@ const NavBar: FC<Props> = (props) => {
             </div>
             <div className=" h-14 w-full bg-gray-100 flex items-center space-x-8" >
             
-            <button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className=" text-gray-800 animate-bounce ml-3"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <button onClick={sidebarToggle}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className=" text-gray-800 animate-bounce ml-3"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            
             </button>
             </div>
 
@@ -41,6 +46,7 @@ const NavBar: FC<Props> = (props) => {
 
         </div>
     );
+    
 };
 NavBar.defaultProps = {
 }
