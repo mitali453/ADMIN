@@ -1,16 +1,14 @@
-
-//import { useState } from "react";
+import { useState } from "react";
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
-//import { meSelector } from "../../selectors/auth.selectors";
-//import { useAppSelector } from "../../store";
+import DropDown from "../DropDown";
 
 
 interface Props {
    sidebarToggle :()=>void;
 }
 const NavBar: FC<Props> = ({sidebarToggle}) => {
-  //const isSideBarOpen=true;  
+    const [isOpen , setIsOpen]=useState(false);
 
   
     //const user = useAppSelector(meSelector);
@@ -29,7 +27,8 @@ const NavBar: FC<Props> = ({sidebarToggle}) => {
                 <div className=" flex items-center space-x-5 mr-6 ">
                     <Link to="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="text-gray-200 feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></Link>
                     <Link to="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="text-gray-200 feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></Link>
-                    <Link to="#"><img className=" h-8 w-8 rounded-md" src="https://designreset.com/cork/ltr/demo4/assets/img/profile-16.jpeg " alt="" /></Link>
+                    <button onClick={()=>setIsOpen(!isOpen)}><img className=" h-8 w-8 rounded-md" src="https://designreset.com/cork/ltr/demo4/assets/img/profile-16.jpeg " alt="" /></button>
+                    <div className=" absolute top-12 right-4">{isOpen && <DropDown></DropDown>}</div>
                 </div>
 
             </div>
