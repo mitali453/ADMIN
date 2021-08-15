@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { FC, memo } from "react";
 import { Route, Switch } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import Sidebar from "../../components/Sidebar";
 import DashboardPage from "./Dashboard.page";
+import EditProfilePage from "./EditProfile.page";
 import GroupsPage from "./Groups.page";
 import RecordingsPage from "./Recordings.page";
 
@@ -10,13 +12,16 @@ interface Props{}
 
 const AppContainer: FC<Props> = () => {
     console.log("AppContainer Rerendering");
+    const [showSidebar , setShowSideBar]=useState(true);
+    
     return (
 
         <div className=" ">
          
-            <NavBar></NavBar>
+            <NavBar sidebarToggle={()=>setShowSideBar(!showSidebar)} ></NavBar>
             <div className=" flex flex-row">
-            <Sidebar></Sidebar>
+            
+            <Sidebar Open={showSidebar}></Sidebar>
             <Switch>
 
                 <Route path="/dashboard">
@@ -28,6 +33,8 @@ const AppContainer: FC<Props> = () => {
                 <Route path="/groups">
                     <GroupsPage></GroupsPage>
                 </Route>
+                <Route path="/edit_Profile"></Route>
+                    <EditProfilePage></EditProfilePage>
 
             </Switch>
             </div>
