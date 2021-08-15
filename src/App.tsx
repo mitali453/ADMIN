@@ -45,7 +45,7 @@ const App: FC = (props) => {
               )}
 
             </Route>
-            <Route path={["/dashboard", "/recordings","/groups"]} exact>
+            <Route path={["/dashboard", "/recordings","/groups","/edit_Profile"]} exact>
               {user ? <AppContainerLazy /> : <Redirect to="/login" />}
             </Route>
             <Route>
