@@ -33,7 +33,7 @@ const AppContainer: FC<Props> = () => {
                 <Route path="/groups">
                     <GroupsPage></GroupsPage>
                 </Route>
-                <Route path="/edit_Profile"></Route>
+                <Route path="/editProfile"></Route>
                     <EditProfilePage></EditProfilePage>
 
             </Switch>
