@@ -3,14 +3,18 @@ import { FaExternalLinkAlt, FaMagento, FaPlay, FaSlideshare } from "react-icons/
 import { Link } from "react-router-dom";
 import { logout } from "../api/auth";
 
+interface Props  {
+    Open:boolean;
+}
 
-const Sidebar: FC = () => {
+
+const Sidebar: FC<Props> = ({Open}) => {
     console.log(" Sidebar is rendering");
-    ;
+
     return (
     
-        <div className="">
-            <div className=" h-screen w-60 bg-gray-300 text-green-500 ">
+        <div className={Open?" visible relative ":"invisible absolute "}>
+            <div className= "h-screen w-60 bg-gray-300  text-green-500">
               
                 <div className=" ml-3 mr-3 flex items-center text-3xl font-bold text-gray-800 space-x-4 rounded-md  hover:bg-white py-3">
                     <FaMagento ></FaMagento>
