@@ -1,6 +1,7 @@
 import {FC , memo}  from  "react";
 import { FaSpinner } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { groupQueryAction } from "../../actions/groups.actions";
 import GroupData from "../../components/GroupList/GroupData";
 import { groupsLoadingSelector, groupQuerySelector, groupsSelector } from "../../selectors/groups.selectors";
@@ -16,6 +17,7 @@ const Groups: FC<Props> = () => {
     const Loading = useAppSelector(groupsLoadingSelector)
     const groups = useAppSelector(groupsSelector);
     const dispatch=useDispatch();
+    //const history=useHistory();
    
 
     return(
@@ -31,8 +33,8 @@ const Groups: FC<Props> = () => {
             <div>
             {groups.map((group, index) => {
                 return (<div
-                    key={group.id}>
-                    <GroupData className={`${(index % 2 === 0) ? "bg-white" : "bg-gray-100"}`} name={group.name} desc={group.description} imgSrc={group.group_image_url}></GroupData>
+                    key={group.id} >
+                    <GroupData className={`${(index % 2 === 0) ? "bg-white" : "bg-gray-100"}`} name={group.name} desc={group.description} imgSrc={group.group_image_url} id={group.id}></GroupData>
                 </div>);
             })}
                 {!Loading && groups.length === 0 &&  " NO DATA FOUND "}
