@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import {ButtonHTMLAttributes, FC, memo} from "react";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
