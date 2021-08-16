@@ -1,13 +1,14 @@
 import { Reducer } from "redux";
-import { GROUPS_QUERY, GROUPS_QUERY_COMPLETED } from "../actions/actions.constants";
+import { GROUPS_FETCH_ONE, GROUPS_FETCH_ONE_COMPLETE, GROUPS_QUERY, GROUPS_QUERY_COMPLETED } from "../actions/actions.constants";
 
 import { Group } from "../models/Group";
-import { addMany, EntityState, getIds } from "./entity.reducer";
+import { addMany, addOne, EntityState, getIds, select } from "./entity.reducer";
 
 export interface GroupState extends EntityState<Group>{ 
     query : string;
     loading :  boolean 
     queryMap : { [query : string] : number[] }
+    
 }
 const initialState = {
     byId : {},
@@ -18,6 +19,8 @@ const initialState = {
 
 export const groupReducer : Reducer<GroupState> = (state = initialState ,action) => {
     switch(action.type){
+        case GROUPS_FETCH_ONE:
+            return select(state,action.payload) as GroupState;
         case GROUPS_QUERY:
             const query = action.payload
             return { 
@@ -36,7 +39,9 @@ export const groupReducer : Reducer<GroupState> = (state = initialState ,action)
                 ...newState,
                 queryMap :{...newState.queryMap , [action.payload.query] : groupIds },
                 loading : false 
-            }
+            };
+        case  GROUPS_FETCH_ONE_COMPLETE:
+            return addOne(state,action.payload) as GroupState;
         default:
             return state
     }

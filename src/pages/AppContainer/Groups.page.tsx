@@ -1,7 +1,6 @@
 import {FC , memo}  from  "react";
 import { FaSpinner } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { groupQueryAction } from "../../actions/groups.actions";
 import GroupData from "../../components/GroupList/GroupData";
 import { groupsLoadingSelector, groupQuerySelector, groupsSelector } from "../../selectors/groups.selectors";
