@@ -3,7 +3,8 @@ import { Entity } from "../models/Entity";
 export interface EntityState<T extends Entity = Entity> {
     byId: {
         [id: number]: T;
-    }
+    },
+    selectedId?: number;
 
 }
 export const getIds = (entities: Entity[]) => {
@@ -12,6 +13,7 @@ export const getIds = (entities: Entity[]) => {
 export const addOne = (state: EntityState, entity: Entity) => {
     return { ...state, byId: { ...state.byId, [entity.id]: entity } };
 };
+export const select = (state: EntityState, id: number) => ({ ...state, selectedId: id })
 
 
 export const addMany = <T extends EntityState = EntityState>(state: EntityState, entities: Entity[]) => {
