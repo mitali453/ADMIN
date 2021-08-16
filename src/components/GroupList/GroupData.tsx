@@ -22,7 +22,7 @@ const GroupData: FC<Props> = ({
         <div className={`flex flex-row p-4 space-x-10 items-start ${className}`}>
             <Avatar  imageUrl={imgSrc?imgSrc:"https://www.w3schools.com/howto/img_avatar2.png"}></Avatar>
             <div className="flex flex-col">
-                <button onClick={()=>history.push("/groups/groupId="+id)}><h1 className="font-bold text-left text-lg">{name[0].toUpperCase()}{name.substr(1) }</h1></button>
+                <button onClick={()=>history.push("/groups/"+id)}><h1 className="font-bold text-left text-lg">{name[0].toUpperCase()}{name.substr(1) }</h1></button>
                 <p>{desc}</p>
             </div>
         </div>
